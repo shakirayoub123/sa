@@ -4,7 +4,7 @@
     <div class='modal'>
         <div class="modalContainer">
             <router-link to="/#portfolio"><div class="backIcon"><i class="fa-solid fa-arrow-left"></i>Go Back</div></router-link>
-       
+
             <div class="work-list">
                 <div class="work" v-for="project in projects" :key="project">
                     <img :src="project.imgUrl ? project.imgUrl : require('@/assets/no-img.jpg')" alt="Project">

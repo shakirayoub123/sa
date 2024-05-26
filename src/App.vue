@@ -1,5 +1,5 @@
 <template>
-  <router-view></router-view>
+ <router-view></router-view>
   <a href="#" id="moveTop" class="hide"><i class="fa-solid fa-circle-arrow-up"></i></a>
 </template>
 
@@ -31,13 +31,13 @@ html {
   width: 7px;
 }
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #262626; 
+  box-shadow: inset 0 0 5px #262626;
 }
 ::-webkit-scrollbar-thumb {
-  background: #ff004d; 
+  background: #ff004d;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #fa417c; 
+  background: #fa417c;
 }
 
 .hide{

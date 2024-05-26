@@ -1,5 +1,6 @@
 <template>
   <div id="header">
+
     <div class="container">
       <nav>
           <h1><span class="red-letter">S</span>HAKIR</h1>
@@ -12,6 +13,7 @@
         </ul>
         <i class="fas fa-bars" @click="openMenu()"></i>
       </nav>
+      <vue-particles color="#dedede" :particleOpacity="0.7" :particlesNumber="80" shapeType="circle" :particleSize="4" :linesWidth="1" :lineLinked="true" :lineOpacity="0.4" :linesDistance="150" :moveSpeed="3" :hoverEffect="true" hoverMode="grab" :clickEffect="true" clickMode="push" />
       <div id="box">
         <div class="header-text">
           <h1>Hi, I'm <span>Shakir Ayoub</span><br /> a Software Developer</h1>

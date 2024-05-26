@@ -1,6 +1,7 @@
 <template>
   <div :style="{ color: randomColor }" class="card quotes">
     <p>{{ randomQuote }}</p>
+
   </div>
 </template>
 
