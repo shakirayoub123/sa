@@ -1,96 +1,27 @@
 <template>
- <router-view></router-view>
-  <a href="#" id="moveTop" class="hide"><i class="fa-solid fa-circle-arrow-up"></i></a>
+  <div class="bg-[#0B0410] min-h-screen font-sans text-white selection:bg-[#693B93] selection:text-white">
+    <router-view></router-view>
+    
+    <a href="#" id="moveTop" class="fixed right-6 bottom-6 z-50 p-4 border border-[#693B93] bg-[#0B0410] shadow-[0_0_15px_-3px_rgba(105,59,147,0.6)] rounded-full text-[#a855f7] text-2xl hover:bg-[#693B93] hover:text-white transition-all duration-300 hidden">
+      <i class="fa-solid fa-arrow-up"></i>
+    </a>
+  </div>
 </template>
 
 <script>
-addEventListener('scroll', () => {
-  if(window.scrollY > 300){
-    document.getElementById('moveTop').classList.remove('hide')
-  }
-  else{
-    document.getElementById('moveTop').classList.add('hide')
-  }
-});
-
 export default {
   name: 'App',
+  mounted() {
+    window.addEventListener('scroll', () => {
+      const moveTopBtn = document.getElementById('moveTop');
+      if (moveTopBtn) {
+        if(window.scrollY > 300) {
+          moveTopBtn.classList.remove('hidden');
+        } else {
+          moveTopBtn.classList.add('hidden');
+        }
+      }
+    });
+  }
 }
 </script>
-
-<style>
-*{
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-::-webkit-scrollbar {
-  width: 7px;
-}
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #262626;
-}
-::-webkit-scrollbar-thumb {
-  background: #ff004d;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #fa417c;
-}
-
-.hide{
-  display: none;
-}
-#moveTop{
-  position: fixed;
-  z-index: 100;
-  font-size: 30px;
-  cursor: pointer;
-  right: 20px;
-  bottom: 20px;
-}
-#moveTop:hover{
-  color: #ff004f;
-}
-
-.container{
-  padding: 10px 10%;
-}
-.row{
-  display: flex;
-  justify-content: space-between;
-}
-.btn{
-  display: block;
-  margin: 50px auto 0 auto;
-  width: fit-content;
-  border: 1px solid #ff004f;
-  padding: 14px 50px;
-  border-radius: 6px;
-  color: #fff;
-  transition: all .5s;
-}
-.btn:hover{
-  background: #ff004f;
-}
-.subtitle{
-  font-size: 50px;
-  font-weight: 600;
-  color: #fff;
-}
-body{
-  overflow-x: hidden;
-  background: #080808;
-  color:#fff;
-  font-family: 'Poppins', sans-serif;
-}
-a{
-  color: inherit;
-  text-decoration: none;
-}
-ul{
-  list-style: none;
-}
-</style>

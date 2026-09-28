@@ -1,181 +1,99 @@
 <template>
-  <div id="header">
+  <header class="relative min-h-screen flex flex-col justify-between bg-[#0B021A] overflow-hidden pt-24" id="header">
+    
+    <!-- Starfield Layer -->
+    <div class="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
+      <span v-for="s in stars" :key="s.id" class="star"
+            :style="{ left: s.x + '%', top: s.y + '%', width: s.size + 'px', height: s.size + 'px', animationDelay: s.delay + 's', animationDuration: s.dur + 's' }"></span>
+    </div>
 
-    <div class="container">
-      <nav>
-          <h1><span class="red-letter">S</span>HAKIR</h1>
-        <ul id="sidemenu">
-          <li><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <i class="fas fa-times" @click="closeMenu()"></i>
-        </ul>
-        <i class="fas fa-bars" @click="openMenu()"></i>
-      </nav>
-      <vue-particles color="#dedede" :particleOpacity="0.7" :particlesNumber="80" shapeType="circle" :particleSize="4" :linesWidth="1" :lineLinked="true" :lineOpacity="0.4" :linesDistance="150" :moveSpeed="3" :hoverEffect="true" hoverMode="grab" :clickEffect="true" clickMode="push" />
-      <div id="box">
-        <div class="header-text">
-          <h1>Hi, I'm <span>Shakir Ayoub</span><br /> a Software Developer</h1>
+    <!-- Central Glow Layer -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-700/20 blur-[130px] rounded-full z-0 pointer-events-none"></div>
+
+    <!-- Hero Content -->
+    <div class="flex-grow flex flex-col items-center justify-center relative z-10 w-full px-4">
+      
+      <!-- Top Graphic & Text Block -->
+      <div class="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16 mb-20 max-w-3xl w-full">
+        
+        <!-- Avatar with Glow -->
+        <div class="relative flex-shrink-0 flex items-end justify-center w-48 sm:w-56 md:w-64 h-64 sm:h-72 md:h-80 mx-auto md:mx-0">
+          <div class="absolute inset-0 bg-purple-600/40 blur-[60px] rounded-full scale-110 z-0 pointer-events-none"></div>
+          <img src="../assets/hero-photo.png" alt="Shakir Ayoub" class="relative z-10 w-full h-full object-contain object-bottom drop-shadow-[0_0_15px_rgba(105,59,147,0.4)] transition-transform duration-500 hover:scale-105" style="mask-image: linear-gradient(to bottom, black 70%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);" />
         </div>
-        <div>
-        <img id="imggif" src="../assets/giphy.gif">
-       </div>
+        
+        <!-- Aesthetic Text -->
+        <div class="text-center md:text-left relative z-10 mt-6 md:mt-0 px-4 md:px-0 w-full max-w-sm md:max-w-none mx-auto md:mx-0">
+          <div class="relative mb-3 flex items-center justify-center md:justify-start">
+            <svg class="absolute -top-6 -left-12 w-10 h-10 text-gray-400 opacity-60 hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 10c0-4.418 5.373-8 12-8 2.378 0 4.59.507 6.42 1.37M21.42 3.37L22 7l-3.63-.58"></path>
+            </svg>
+            <p class="text-gray-300 text-sm tracking-wide">Hello! I Am <span class="text-purple-500 font-medium tracking-widest text-base">Shakir Ayoub</span></p>
+          </div>
+          
+          <p class="text-gray-400 text-sm tracking-wide mb-2">A Full-Stack & Salesforce Developer who</p>
+          <h2 class="text-white text-4xl md:text-5xl font-light leading-tight tracking-wide mb-4">
+            Architects scalable<br/>
+            cloud <span class="relative inline-block px-1">
+              solutions
+              <svg class="absolute inset-0 w-full h-full text-purple-500 scale-125 transform -rotate-2" fill="none" viewBox="0 0 100 40" stroke="currentColor" stroke-width="1.5">
+                <ellipse cx="50" cy="20" rx="45" ry="18"></ellipse>
+              </svg>
+            </span>
+          </h2>
+          <p class="text-gray-400 text-xs md:text-sm max-w-sm leading-relaxed">Delivering enterprise applications across the MERN stack and Salesforce cloud ecosystems.</p>
+        </div>
+      </div>
+
+      <!-- Main Text -->
+      <div class="space-y-6 max-w-3xl mx-auto text-center w-full relative z-10 px-4 md:px-6">
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-medium leading-tight text-white mb-2 tracking-wide break-words">
+          I'm a MERN & Salesforce Developer<span class="font-light">|</span>
+        </h1>
+        <p class="text-sm md:text-base text-gray-400 font-light tracking-wide mb-8 px-2">
+          Currently a Senior Consultant at <span class="text-blue-400 whitespace-nowrap"><i class="fa-solid fa-cloud mr-1"></i>Protiviti India</span>
+        </p>
+        
+        <p class="text-base md:text-lg text-gray-300 leading-relaxed font-light mt-8 px-2 md:px-0 max-w-2xl mx-auto">
+          A passionate Developer with 3+ years of expertise spanning the MERN Stack (MongoDB, Express, React, Node.js) alongside extensive Salesforce mastery in LWC, Apex, and OmniStudio. I build scalable, secure digital products that create an equilibrium between user needs and business goals.
+        </p>
       </div>
     </div>
-  </div>
+    
+  </header>
 </template>
 
 <script>
 export default {
   name: 'Header',
-  methods: {
-    openMenu() {
-      document.querySelector('ul').classList.add('menuSidebar')
-    },
-    closeMenu() {
-      document.querySelector('ul').classList.remove('menuSidebar')
-    },
+  data() {
+    return {
+      stars: []
+    }
   },
+  mounted() {
+    this.stars = Array.from({ length: 90 }, (_, id) => ({
+      id,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 0.8,
+      delay: Math.random() * 5,
+      dur: 2.5 + Math.random() * 4
+    }))
+  }
 }
 </script>
 
 <style scoped>
-.red-letter{
-  color:#ff004f;
-}
-#logo {
-  height: 60px;
-  width: 350px;
-  max-width: 110px;
-  padding-top: 7px;
-}
-
-#imggif {
-  max-width: 100%;
-  height: 400px;
-  width: 80%;
-  display: flex;
-  margin: auto;
-  border-radius: 20px;
-}
-
-.menuSidebar {
-  position: fixed;
-  right: 0;
-}
-
-#header {
-  width: 100%;
-  background-image: url('https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2369&q=80');
-  background-image: url('https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2369&q=80');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center center;
-}
-
-nav .fas {
-  display: none;
-}
-
-.container {
-  /* padding: 10px 10%; */
-  padding: 0 10%;
-}
-
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-nav ul li {
-  display: inline-block;
-  margin: 10px 20px;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
-  position: relative;
-}
-
-nav ul li a::after {
-  content: '';
-  width: 0%;
-  height: 3px;
-  background: #ff004f;
+.star {
   position: absolute;
-  left: 0;
-  bottom: -6px;
-  transition: 0.5s;
+  border-radius: 9999px;
+  background: #E9D5FF;
+  opacity: 0.2;
+  animation: twinkle 4s ease-in-out infinite;
 }
-
-nav ul li a:hover::after {
-  width: 100%;
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(0.8); }
+  50%      { opacity: 1; transform: scale(1.3); }
 }
-
-.header-text {
-  margin-top: 15%;
-  font-size: 30px;
-}
-
-.header-text h1 {
-  font-size: 60px;
-  margin-top: 20px;
-  /* width: 40%; */
-}
-
-.header-text h1 span {
-  color: #ff004f;
-}
-
-@media only screen and (max-width: 600px) {
-  #header {
-    /* background-image: url('../assets/phone-background.png'); */
-  }
-
-  .header-text {
-    /* margin-top: 80%; */
-    font-size: 16px;
-  }
-
-  .header-text h1 {
-    font-size: 30px;
-  }
-
-  nav .fas {
-    display: block;
-    font-size: 25px;
-    cursor: pointer;
-  }
-
-  nav ul {
-    //background: #ff004f;
-    position: fixed;
-    top: 0;
-    display: block;
-    right: -175px;
-    width: 175px;
-    height: 100vh;
-    padding-top: 50px;
-    z-index: 2;
-    transition: all 0.5s;
-  }
-
-  nav ul li {
-    display: block;
-    margin: 25px;
-  }
-
-  nav ul .fas {
-    position: absolute;
-    top: 47px;
-    left: 78px;
-    cursor: pointer;
-  }
-  }
-
 </style>

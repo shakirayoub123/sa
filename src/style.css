@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #8b5cf6;
+  --color-primary-hover: #a855f7;
+  --color-dark: #0B0410;
+  --color-card: #1A0B2E;
+}
+
+body {
+  @apply bg-[#0B0410] text-white font-sans;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #130922;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-hover);
+}

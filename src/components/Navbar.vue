@@ -1,0 +1,56 @@
+<template>
+  <div>
+    <!-- Global Main Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#0B021A]/90 border-b border-[#693B93]/30 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        <router-link to="/" class="flex-shrink-0 cursor-pointer block group">
+          <img src="../assets/sa-logo.png" alt="Shakir Ayoub Logo" class="h-10 md:h-12 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] group-hover:scale-105 transition-transform duration-300" />
+        </router-link>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex space-x-12 text-sm font-medium text-gray-300">
+          <li><router-link to="/" class="hover:text-purple-400 transition-colors">Home</router-link></li>
+          <li><router-link to="/about" class="hover:text-purple-400 transition-colors">About</router-link></li>
+          <li><router-link to="/#services" class="hover:text-purple-400 transition-colors">Services</router-link></li>
+          <li><router-link to="/#portfolio" class="hover:text-purple-400 transition-colors">Projects</router-link></li>
+          <li><router-link to="/#contact" class="hover:text-purple-400 transition-colors">Contact</router-link></li>
+        </ul>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="md:hidden flex items-center justify-center p-3 text-2xl text-gray-300 hover:text-white transition-colors relative z-[100]" @click="toggleMenu" aria-label="Toggle Menu">
+          <i class="fas fa-bars pointer-events-none"></i>
+        </button>
+      </div>
+    </nav>
+    
+    <!-- Mobile Sidebar -->
+    <div :class="isOpen ? 'translate-x-0' : 'translate-x-full'" class="fixed inset-y-0 right-0 z-[60] w-64 bg-[#0B021A]/95 backdrop-blur-xl border-l border-[#693B93]/50 shadow-2xl transition-transform duration-300 ease-in-out md:hidden flex flex-col">
+      <div class="flex justify-end p-6">
+        <i class="fas fa-times text-2xl cursor-pointer text-gray-400 hover:text-purple-400" @click="toggleMenu"></i>
+      </div>
+      <ul class="flex flex-col space-y-8 px-8 text-lg font-medium text-gray-300">
+        <li><router-link to="/" @click="toggleMenu" class="hover:text-purple-400">Home</router-link></li>
+        <li><router-link to="/about" @click="toggleMenu" class="hover:text-purple-400">About</router-link></li>
+        <li><router-link to="/#services" @click="toggleMenu" class="hover:text-purple-400">Services</router-link></li>
+        <li><router-link to="/#portfolio" @click="toggleMenu" class="hover:text-purple-400">Projects</router-link></li>
+        <li><router-link to="/#contact" @click="toggleMenu" class="hover:text-purple-400">Contact</router-link></li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Navbar',
+  data() {
+    return {
+      isOpen: false,
+    }
+  },
+  methods: {
+    toggleMenu() {
+      this.isOpen = !this.isOpen
+    },
+  },
+}
+</script>
