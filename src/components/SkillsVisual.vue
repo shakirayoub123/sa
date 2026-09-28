@@ -90,7 +90,7 @@
           <g stroke="#693B93" stroke-width="1.1" opacity="0.5">
             <path v-for="(p, i) in lines" :key="'t' + i" :d="p" />
           </g>
-          <g class="flow" stroke="#D8B4FE" stroke-width="2" style="filter: drop-shadow(0 0 5px #A855F7);">
+          <g class="flow" stroke="#D8B4FE" stroke-width="2.5" opacity="0.8">
             <path v-for="(p, i) in lines" :key="'f' + i" :d="p" :style="{ animationDelay: i * -1.3 + 's' }" />
           </g>
         </g>
@@ -212,8 +212,8 @@ export default {
 .scene { aspect-ratio: 1000 / 690; }
 
 /* Stars */
-.star { position: absolute; border-radius: 9999px; opacity: 0.2; animation: twinkle 4s ease-in-out infinite; }
-@keyframes twinkle { 0%, 100% { opacity: 0.1; transform: scale(0.8); } 50% { opacity: 0.95; transform: scale(1.3); } }
+.star { position: absolute; border-radius: 9999px; opacity: 0.2; animation: twinkle 4s ease-in-out infinite; will-change: transform, opacity; transform: translateZ(0); }
+@keyframes twinkle { 0%, 100% { opacity: 0.1; transform: scale(0.8) translateZ(0); } 50% { opacity: 0.95; transform: scale(1.3) translateZ(0); } }
 
 /* Shooting stars: brief streak, long pause */
 .shoot {
@@ -230,38 +230,38 @@ export default {
 }
 
 /* Rings */
-.ring { animation: ringPulse 5s ease-in-out infinite alternate; }
+.ring { animation: ringPulse 5s ease-in-out infinite alternate; will-change: opacity; }
 @keyframes ringPulse { from { opacity: 0.55; } to { opacity: 1; } }
-.ring-scan { stroke-dasharray: 40 1400; opacity: 0.6; animation: scan 14s linear infinite; filter: drop-shadow(0 0 4px #A855F7); }
+.ring-scan { stroke-dasharray: 40 1400; opacity: 0.6; animation: scan 14s linear infinite; will-change: stroke-dashoffset; stroke-width: 2.2px; }
 @keyframes scan { to { stroke-dashoffset: -1440; } }
 
 /* Satellite beacon */
-.blink { animation: blink 1.6s steps(1) infinite; }
+.blink { animation: blink 1.6s steps(1) infinite; will-change: opacity; }
 @keyframes blink { 50% { opacity: 0.1; } }
 
 /* Data flow */
-.flow path { stroke-dasharray: 6 60; animation: dashFlow 4s linear infinite; }
+.flow path { stroke-dasharray: 6 60; animation: dashFlow 4s linear infinite; will-change: stroke-dashoffset; }
 @keyframes dashFlow { to { stroke-dashoffset: -198; } }
 
 /* Bubbles */
 .bubble {
-  position: absolute; width: 4.3%; aspect-ratio: 1; transform: translate(-50%, -50%);
+  position: absolute; width: 4.3%; aspect-ratio: 1; transform: translate(-50%, -50%) translateZ(0);
   border-radius: 9999px; background: #1E1830;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 0 18px rgba(168, 85, 247, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  animation: bob 5s ease-in-out infinite;
+  animation: bob 5s ease-in-out infinite; will-change: transform;
 }
-@keyframes bob { 0%, 100% { transform: translate(-50%, -50%) translateY(0); } 50% { transform: translate(-50%, -50%) translateY(-6px); } }
+@keyframes bob { 0%, 100% { transform: translate(-50%, -50%) translateY(0) translateZ(0); } 50% { transform: translate(-50%, -50%) translateY(-6px) translateZ(0); } }
 
 /* Orb: planet-like core */
-.orb-wrap { position: absolute; width: 17.6%; aspect-ratio: 1; transform: translate(-50%, -50%); animation: orbFloat 7s ease-in-out infinite; }
-@keyframes orbFloat { 0%, 100% { transform: translate(-50%, -50%) translateY(0); } 50% { transform: translate(-50%, -50%) translateY(-10px); } }
+.orb-wrap { position: absolute; width: 17.6%; aspect-ratio: 1; transform: translate(-50%, -50%) translateZ(0); animation: orbFloat 7s ease-in-out infinite; will-change: transform; }
+@keyframes orbFloat { 0%, 100% { transform: translate(-50%, -50%) translateY(0) translateZ(0); } 50% { transform: translate(-50%, -50%) translateY(-10px) translateZ(0); } }
 .orb-glow {
   position: absolute; inset: -50%; border-radius: 9999px;
   background: radial-gradient(circle, rgba(139, 79, 208, 0.55) 0%, rgba(90, 40, 150, 0.25) 40%, transparent 70%);
-  animation: glow 5s ease-in-out infinite alternate;
+  animation: glow 5s ease-in-out infinite alternate; will-change: transform, opacity; transform: translateZ(0);
 }
-@keyframes glow { from { transform: scale(0.92); opacity: 0.7; } to { transform: scale(1.1); opacity: 1; } }
+@keyframes glow { from { transform: scale(0.92) translateZ(0); opacity: 0.7; } to { transform: scale(1.1) translateZ(0); opacity: 1; } }
 .orb {
   position: relative; width: 100%; height: 100%; border-radius: 9999px; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
@@ -272,9 +272,9 @@ export default {
 .orb-swirl {
   position: absolute; inset: -20%; border-radius: 9999px; opacity: 0.35; mix-blend-mode: soft-light;
   background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.7), transparent 25%, rgba(200,150,255,0.6) 50%, transparent 70%, rgba(255,255,255,0.5), transparent);
-  filter: blur(10px); animation: spin 40s linear infinite;
+  animation: spin 40s linear infinite; will-change: transform; transform: translateZ(0);
 }
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin { from { transform: rotate(0deg) translateZ(0); } to { transform: rotate(360deg) translateZ(0); } }
 /* atmosphere + terminator shadow */
 .orb-rim {
   position: absolute; inset: 0; border-radius: 9999px;
