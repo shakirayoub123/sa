@@ -1,7 +1,8 @@
 <template>
   <div>
     <!-- Global Main Navbar -->
-    <nav class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#0B021A]/90 border-b border-[#693B93]/30 transition-all duration-300">
+    <nav class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#0B021A]/90 border-b border-[#693B93]/30 transition-all duration-300"
+         :class="{'translate-y-0': showNavbar, '-translate-y-[120%]': !showNavbar}">
       <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
         <router-link to="/" class="flex-shrink-0 cursor-pointer block group">
           <img src="../assets/sa-logo.png" alt="Shakir Ayoub Logo" class="h-10 md:h-12 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] group-hover:scale-105 transition-transform duration-300" />
@@ -55,9 +56,31 @@ export default {
   data() {
     return {
       isOpen: false,
+      showNavbar: true,
+      lastScrollPosition: 0
     }
   },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.onScroll)
+  },
   methods: {
+    onScroll() {
+      const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+      // Always show at absolute top
+      if (currentScrollPosition < 60) {
+        this.showNavbar = true
+      } else if (currentScrollPosition > this.lastScrollPosition) {
+        // Scrolling down -> slide out to maximize viewport
+        this.showNavbar = false
+      } else {
+        // Scrolling up -> drop back in
+        this.showNavbar = true
+      }
+      this.lastScrollPosition = currentScrollPosition
+    },
     toggleMenu() {
       this.isOpen = !this.isOpen
     },
