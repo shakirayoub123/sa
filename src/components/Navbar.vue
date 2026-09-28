@@ -14,6 +14,11 @@
           <li><router-link to="/#services" class="hover:text-purple-400 transition-colors">Services</router-link></li>
           <li><router-link to="/#portfolio" class="hover:text-purple-400 transition-colors">Projects</router-link></li>
           <li><router-link to="/#contact" class="hover:text-purple-400 transition-colors">Contact</router-link></li>
+          <li>
+            <a href="/Shakir_Ayoub_B.docx" target="_blank" download class="px-5 py-2 rounded-full border border-[#A855F7] text-[#A855F7] hover:bg-[#A855F7] hover:text-white transition-colors duration-300 font-bold tracking-wider text-xs shadow-[0_0_10px_rgba(168,85,247,0.2)] hover:shadow-[0_0_20px_rgba(168,85,247,0.6)]">
+              RESUME
+            </a>
+          </li>
         </ul>
 
         <!-- Mobile Hamburger Toggle -->
@@ -34,6 +39,11 @@
         <li><router-link to="/#services" @click="toggleMenu" class="hover:text-purple-400">Services</router-link></li>
         <li><router-link to="/#portfolio" @click="toggleMenu" class="hover:text-purple-400">Projects</router-link></li>
         <li><router-link to="/#contact" @click="toggleMenu" class="hover:text-purple-400">Contact</router-link></li>
+        <li class="pt-4 border-t border-[#693B93]/30">
+           <a href="/Shakir_Ayoub_B.docx" target="_blank" download @click="toggleMenu" class="inline-block px-8 py-3 rounded-full bg-[#A855F7] text-white font-bold tracking-widest text-sm shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+             DOWNLOAD RESUME
+           </a>
+        </li>
       </ul>
     </div>
   </div>

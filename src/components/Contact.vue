@@ -33,7 +33,7 @@
               +91-7006354926
             </a>
             <p class="text-gray-300 text-lg font-light">
-              Noida, UP
+              Kulgam, Kashmir
             </p>
           </div>
           

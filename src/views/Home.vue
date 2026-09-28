@@ -4,6 +4,8 @@
     <Header />
     <SkillsVisual />
     <Services />
+    <Experience />
+    <Certifications />
     <Portfolio />
     <Quotes />
     <FAQ />
@@ -18,6 +20,7 @@ import Header from '../components/Header.vue'
 import SkillsVisual from '../components/SkillsVisual.vue'
 import Services from '../components/Services.vue'
 import Experience from '../components/Experience.vue'
+import Certifications from '../components/Certifications.vue'
 import Portfolio from '../components/Portfolio.vue'
 import Quotes from "@/components/Quotes.vue";
 import FAQ from '../components/FAQ.vue'
@@ -34,6 +37,7 @@ export default {
     SkillsVisual,
     Services,
     Experience,
+    Certifications,
     Portfolio,
     Contact,
     Footer
